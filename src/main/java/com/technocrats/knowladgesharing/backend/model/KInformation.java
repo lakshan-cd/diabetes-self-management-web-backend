@@ -18,8 +18,12 @@ public class KInformation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "knowladge_sharing_generator")
     private Long kid;
+    private String title;
     private String catergory;
+    @Lob
     private String img_url;
+    @Lob
     private String v_url;
+    @Lob
     private String description;
 }
