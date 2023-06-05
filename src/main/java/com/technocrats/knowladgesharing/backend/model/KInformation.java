@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -26,4 +28,7 @@ public class KInformation {
     private String v_url;
     @Lob
     private String description;
+    @Column(name = "created_date")
+    @CreationTimestamp
+    private LocalDateTime createdDate;
 }
