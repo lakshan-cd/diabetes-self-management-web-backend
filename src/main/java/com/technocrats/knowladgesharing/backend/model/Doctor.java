@@ -6,18 +6,20 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
-import java.util.List;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Entity
-public class Nutritionist {
+@Table(name = "doctor")
+public class Doctor {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "nutritionist_generator")
-    private Long nid;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "doctor_generator")
+    private Long did;
     @Column(name = "username")
     private String username;
     @Column(name = "password")
@@ -35,17 +37,5 @@ public class Nutritionist {
     private String hNo;
     private Date a_date;
     private String a_time;
-
-//    @OneToMany(targetEntity = Workouts.class , cascade = CascadeType.ALL)
-//    @JoinColumn(name ="nt_id_fk", referencedColumnName = "nid")
-//    private List<Workouts> workouts;
-//
-//    @OneToMany(targetEntity = DietPlans.class , cascade = CascadeType.ALL)
-//    @JoinColumn(name ="nt_id_fk", referencedColumnName = "nid")
-//    private List<DietPlans> dietPlans;
-//
-//    @OneToMany(targetEntity = NewsReaserch.class , cascade = CascadeType.ALL)
-//    @JoinColumn(name ="nt_id_fk", referencedColumnName = "nid")
-//    private List<NewsReaserch> newsResearch;
 
 }

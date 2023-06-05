@@ -1,12 +1,11 @@
 package com.technocrats.knowladgesharing.backend.model;
-import antlr.collections.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-//import java.util.List;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -31,9 +30,15 @@ public class Admin {
     @Column(name = "telephone")
     private int telephoneno;
 
-//    @OneToMany(targetEntity = Workouts.class , cascade = CascadeType.ALL)
+//    @OneToMany(targetEntity = KInformation.class , cascade = CascadeType.ALL)
 //    @JoinColumn(name ="admin_id_fk", referencedColumnName = "aid")
-//    private List<Workouts> workouts;
+//    private List<KInformation> kInformationList;
+
+//    @OneToMany(targetEntity = KInformation.class , cascade = CascadeType.ALL)
+//    @JoinColumn(name ="admin_id_fk", referencedColumnName = "aid")
+//    private List<KInformation> kInformations;
+
+
 //
 //    @OneToMany(targetEntity = DietPlans.class , cascade = CascadeType.ALL)
 //    @JoinColumn(name ="admin_id_fk", referencedColumnName = "aid")
