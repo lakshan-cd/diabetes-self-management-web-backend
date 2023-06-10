@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.sql.Time;
-import java.util.Date;
 
 
 @Data
@@ -32,10 +30,9 @@ public class Doctor {
     private String lname;
     @Column(name = "telephone")
     private int telephoneno;
-    private String city;
-    private String street;
     private String hNo;
-    private Date a_date;
+    private String a_date;
     private String a_time;
+    private String img_url;
 
 }
