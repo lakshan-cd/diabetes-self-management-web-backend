@@ -7,7 +7,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -23,6 +22,7 @@ public class Nutritionist {
     @Column(name = "password")
     private String password;
     @Column(name = "email")
+
     private String email;
     @Column(name = "fname")
     private String fname;
