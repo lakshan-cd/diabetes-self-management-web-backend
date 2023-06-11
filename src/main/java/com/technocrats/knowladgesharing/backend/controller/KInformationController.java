@@ -80,7 +80,7 @@ public class KInformationController {
     }
 
 
-//get count of all months
+//get count according to information type
     @GetMapping("/getCount")
     public ResponseEntity<List<Object[]>> getCountByCategory() {
         List<Object[]> countByCategory = kInformationService.getCountByCategory();

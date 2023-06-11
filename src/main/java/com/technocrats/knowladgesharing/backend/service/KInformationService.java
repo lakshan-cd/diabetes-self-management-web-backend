@@ -31,7 +31,7 @@ public class KInformationService  {
     public List<KInformation> getKInformationByCategory(String catergory){
         return kInformationRepository.findByCatergory(catergory);
     }
-
+//get by id
     public KInformation getKInformationById(Long id) {
         return kInformationRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
     }

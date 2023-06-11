@@ -63,4 +63,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    //grt count of all users acording to user type
+    public List<Object[]> getCountByCategory ( ){
+        return userRepository.countByUserType();
+    }
+
 }

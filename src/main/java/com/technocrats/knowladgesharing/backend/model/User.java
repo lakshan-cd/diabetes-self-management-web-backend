@@ -31,7 +31,4 @@ public class User {
     @Column(name ="profilePictureUrl")
     private String profilePictureUrl;
 
-
-
-
 }
