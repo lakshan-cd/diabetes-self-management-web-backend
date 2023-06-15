@@ -15,6 +15,9 @@ public class ReservationRequestObject {
      String r_type;
      String date;
      String time;
+     Long pid;
+     Long d_id;
+     String isremove;
 
 
 }

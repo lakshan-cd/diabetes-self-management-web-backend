@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin("http://192.168.8.167")
+@CrossOrigin("*")
 @RequestMapping("/api/users") //edit
 public class UserController {
     @Autowired
@@ -83,6 +83,15 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error updating password");
         }
     }
+
+    //get the count of users according to each type
+
+    @GetMapping("/getCountOfUsers")
+    public ResponseEntity<List<Object[]>> getCountByCategory() {
+        List<Object[]> countByCategory = userService.getCountByCategory();
+        return ResponseEntity.ok(countByCategory);
+    }
+
 
 
 }
