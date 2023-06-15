@@ -1,5 +1,7 @@
 package com.technocrats.knowladgesharing.backend.service;
 
+import com.technocrats.knowladgesharing.backend.exception.ResourceNotFoundException;
+import com.technocrats.knowladgesharing.backend.model.KInformation;
 import com.technocrats.knowladgesharing.backend.model.Reservation;
 import com.technocrats.knowladgesharing.backend.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +26,19 @@ public class ReservationService {
     public Reservation addReservation (Reservation reservation){
         return reservationRepository.save(reservation);
     }
+
+//    public List<Reservation> getReservationsByPId(Long pId) {
+//        return reservationRepository.findByP_id(pId);
+//    }
+
+    public List<Reservation> getReservationsByPId(Long pId) {
+        return reservationRepository.findByPid(pId);
+    }
+
+    //get by id
+    public Reservation getReservationById(Long id) {
+        return reservationRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
+    }
+
+
 }

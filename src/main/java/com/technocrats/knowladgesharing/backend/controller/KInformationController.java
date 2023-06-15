@@ -13,7 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin({"http:///192.168.8.103", "http://localhost:3000"})
+//@CrossOrigin({"http:///192.168.8.103", "http://localhost:3000"})
+@CrossOrigin("*")
 //@CrossOrigin("http://localhost:3000")
 //@RequestMapping("/kinformation")
 public class KInformationController {

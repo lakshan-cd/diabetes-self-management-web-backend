@@ -10,5 +10,5 @@ public interface DoctorRepository extends JpaRepository<Doctor , Long> {
     //find by catergory
 
 
-    List<Doctor> findByCatergory(String catergory);
+//    List<Doctor> findByCatergory(String catergory);
 }

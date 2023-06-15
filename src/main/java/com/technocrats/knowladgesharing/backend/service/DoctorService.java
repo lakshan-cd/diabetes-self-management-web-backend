@@ -31,9 +31,9 @@ public class DoctorService {
     }
 
     //get data acording to catergory
-    public List<Doctor> getDataAcordingToCatergory( String catergory){
-        return doctorRepository.findByCatergory(catergory);
-    }
+//    public List<Doctor> getDataAcordingToCatergory( String catergory){
+//        return doctorRepository.findByCatergory(catergory);
+//    }
 
 
 

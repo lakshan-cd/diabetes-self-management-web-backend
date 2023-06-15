@@ -22,4 +22,7 @@ public class Reservation {
     private String r_type;
     private String date;
     private String time;
+    private Long pid;
+    private Long d_id;
+    private String isremove;
 }
