@@ -32,7 +32,7 @@ public class ReservationService {
 //    }
 
     public List<Reservation> getReservationsByPId(Long pId) {
-        return reservationRepository.findByPid(pId);
+        return reservationRepository.getReservationsByPId(pId,"no");
     }
 
     //get by id
@@ -41,4 +41,15 @@ public class ReservationService {
     }
 
 
+    public List<Reservation> getReservationsByRoleAndDocId(Long dId, String type) {
+        return reservationRepository.getReservationsByRoleAndDocId(dId,type);
+    }
+
+    public List<Reservation> getReservationsByPatient(Long pId, String type) {
+        return reservationRepository.getReservationsByPatient(pId,type);
+    }
+
+    public List<Reservation> getAllCanceledReservations() {
+        return reservationRepository.getAllCanceledReservations("yes");
+    }
 }
