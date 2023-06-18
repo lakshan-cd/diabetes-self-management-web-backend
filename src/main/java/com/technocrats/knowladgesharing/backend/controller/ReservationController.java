@@ -34,7 +34,7 @@ public class ReservationController {
         ra.setDate(reservationRequestObject.getDate());
         ra.setTime(reservationRequestObject.getTime());
 //        ra.setP_id(reservationRequestObject.getP_id());
-        ra.setPid(reservationRequestObject.getPid());
+        ra.setP_id(reservationRequestObject.getP_id());
         ra.setD_id(reservationRequestObject.getD_id());
         ra.setIsremove(reservationRequestObject.getIsremove());
 
@@ -52,6 +52,9 @@ public class ReservationController {
         return reservationService.getReservationsByPId(pId);
     }
 
+    //
+
+
     //update whether to find user cancel or not
     @PutMapping("/updateReservation/{id}")
     public Reservation addReservation(@PathVariable Long id , @RequestBody ReservationRequestObject reservationRequestObject){
@@ -62,6 +65,27 @@ public class ReservationController {
         return reservationService.addReservation(ra); //send data to update database
 
     }
+
+
+    //showing to doc and nutritionist
+    @GetMapping("/getReservationsByRole/{dId}/{Type}")
+    public List<Reservation> getReservationsByRoleAndDocId(@PathVariable Long dId,@PathVariable String Type) {
+        return reservationService.getReservationsByRoleAndDocId(dId,Type);
+    }
+
+    //show reservations for patient by categorizing by doc and nutritionist
+    @GetMapping("/getReservationsByPatient/{pId}/{Type}")
+    public List<Reservation> getReservationsForPatient(@PathVariable Long pId, @PathVariable String Type) {
+        return reservationService.getReservationsByPatient(pId,Type);
+    }
+
+    //get all canceled reservations
+    @GetMapping("/getAllCancledReservations")
+    public List<Reservation> getAllCanceledReservations() {
+        return reservationService.getAllCanceledReservations();
+    }
+
+
 
 
 
