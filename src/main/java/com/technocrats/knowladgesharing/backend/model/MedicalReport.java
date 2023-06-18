@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,7 +18,13 @@ import javax.persistence.*;
 public class MedicalReport {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "medical_report_generator")
-    private Long r_id;
+    private Long rid;
     private String description;
     private String type;
+    @ElementCollection
+    private List<String> reportlink = new ArrayList<>();
+    private int pid;
+    private int did;
+    private int nid;
+
 }

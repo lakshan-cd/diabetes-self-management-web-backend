@@ -16,5 +16,5 @@ import javax.persistence.*;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "payment_generator")
-    private Long p_id;
+    private Long payid;
 }
