@@ -1,4 +1,4 @@
-package com.technocrats.knowladgesharing.backend.service;
+package com.technocrats.knowladgesharing.backend.dto;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
