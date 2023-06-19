@@ -10,9 +10,9 @@ import java.util.List;
 public interface ReservationRepository extends JpaRepository<Reservation ,Long > {
 
 //    List<Reservation> findByTime(Long pId);
-           // List<Reservation> findByPid(Long pId);
-            @Query("SELECT u FROM Reservation u WHERE u.d_id=?1 AND u.r_type=?2")
-    List<Reservation> getReservationsByRoleAndDocId(Long dId, String type);
+//            List<Reservation> findByPid(Long pId);
+        @Query("SELECT u FROM Reservation u WHERE u.d_id=?1 AND u.r_type=?2 AND u.isremove =?3")
+    List<Reservation> getReservationsByRoleAndDocId(Long dId, String type ,String isremoved);
 
     @Query("SELECT u FROM Reservation u WHERE u.p_id=?1 AND u.r_type=?2")
     List<Reservation> getReservationsByPatient(Long pId, String type);
