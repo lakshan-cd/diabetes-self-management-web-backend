@@ -42,7 +42,7 @@ public class ReservationService {
 
 
     public List<Reservation> getReservationsByRoleAndDocId(Long dId, String type) {
-        return reservationRepository.getReservationsByRoleAndDocId(dId,type);
+        return reservationRepository.getReservationsByRoleAndDocId(dId,type,"no");
     }
 
     public List<Reservation> getReservationsByPatient(Long pId, String type) {
