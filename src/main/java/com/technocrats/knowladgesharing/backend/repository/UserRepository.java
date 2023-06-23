@@ -13,4 +13,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
     //get count of users according to catergory
     @Query("SELECT u.user_type, COUNT(u) FROM User u GROUP BY u.user_type")
     List<Object[]> countByUserType();
+
+    boolean existsByEmail(String email);
 }
