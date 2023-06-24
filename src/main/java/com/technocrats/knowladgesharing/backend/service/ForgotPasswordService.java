@@ -9,6 +9,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.Random;
 @Service
 public class ForgotPasswordService {
 
@@ -21,21 +22,38 @@ public class ForgotPasswordService {
     @Autowired
     private JavaMailSender mailSender;
 
+    @Autowired
+    private EmailService emailService;
+
     public void forgotPassword(String email) throws Exception {
         User user = userRepository.findByEmail(email);
         if (user == null) {
             throw new Exception("User not found");
         }
 
-        // Create a new password reset token and save it in the database
-        PasswordResetToken passwordResetToken = new PasswordResetToken(user);
-        passwordResetTokenRepository.save(passwordResetToken);
+        // Generate a new password
+        String newPassword = generateRandomPassword(8);
 
-        // Send an email to the user with the password reset link
-        SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo(email);
-        message.setSubject("Password Reset Request");
-        message.setText("Please click on the following link to reset your password: http://localhost:3000/reset-password?token=" + passwordResetToken.getToken());
-        mailSender.send(message);
+        // Update the user's password in the database
+        user.setPassword(newPassword);
+        userRepository.save(user);
+
+        // Create a new password reset token and save it in the database
+//        PasswordResetToken passwordResetToken = new PasswordResetToken(user);
+//        passwordResetTokenRepository.save(passwordResetToken);
+
+        // Send an email to the user with the new password and the password reset link
+        emailService.sendNewPassword(email, newPassword);
+    }
+
+    private String generateRandomPassword(int length) {
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        for (int i = 0; i < length; i++) {
+            int index = random.nextInt(chars.length());
+            sb.append(chars.charAt(index));
+        }
+        return sb.toString();
     }
 }

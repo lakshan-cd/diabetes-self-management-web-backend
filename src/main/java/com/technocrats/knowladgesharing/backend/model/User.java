@@ -1,8 +1,5 @@
 package com.technocrats.knowladgesharing.backend.model;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -30,5 +27,7 @@ public class User {
     private String user_type;
     @Column(name ="profilePictureUrl")
     private String profilePictureUrl;
+    @Column(name = "otp")
+    private String otp;
 
 }
