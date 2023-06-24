@@ -70,6 +70,7 @@ public class UserService {
         return userRepository.save(user);
     }
 
+
     public void generateAndSaveOTP(User user) {
         // Generate a 6-digit OTP
         String otp = RandomStringUtils.randomNumeric(6);
@@ -117,5 +118,11 @@ public class UserService {
         // Generate and send a new OTP
         generateAndSaveOTP(user);
     }
+    //grt count of all users acording to user type
+    public List<Object[]> getCountByCategory ( ){
+        return userRepository.countByUserType();
+    }
 
 }
+
+

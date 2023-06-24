@@ -1,19 +1,17 @@
 package com.technocrats.knowladgesharing.backend.controller;
 
 import com.technocrats.knowladgesharing.backend.model.KInformation;
-import com.technocrats.knowladgesharing.backend.service.CategoryCount;
-import com.technocrats.knowladgesharing.backend.service.KInformationRequestObject;
+import com.technocrats.knowladgesharing.backend.dto.KInformationRequestObject;
 import com.technocrats.knowladgesharing.backend.service.KInformationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
-@CrossOrigin({"http:///192.168.8.103", "http://localhost:3000"})
+//@CrossOrigin({"http:///192.168.8.103", "http://localhost:3000"})
+@CrossOrigin("*")
 //@CrossOrigin("http://localhost:3000")
 //@RequestMapping("/kinformation")
 public class KInformationController {
@@ -80,7 +78,7 @@ public class KInformationController {
     }
 
 
-//get count of all months
+//get count according to information type
     @GetMapping("/getCount")
     public ResponseEntity<List<Object[]>> getCountByCategory() {
         List<Object[]> countByCategory = kInformationService.getCountByCategory();

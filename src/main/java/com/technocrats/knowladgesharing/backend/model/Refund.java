@@ -16,6 +16,6 @@ import javax.persistence.*;
 public class Refund {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "refundpayment_generator")
-    private Long r_id;
+    private Long refundid;
     private String reason;
 }

@@ -30,7 +30,4 @@ public class User {
     @Column(name = "otp")
     private String otp;
 
-
-
-
 }
