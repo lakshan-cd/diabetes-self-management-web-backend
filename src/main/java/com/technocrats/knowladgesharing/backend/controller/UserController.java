@@ -114,6 +114,11 @@ public class UserController {
         return ResponseEntity.ok(countByCategory);
     }
 
-
+    //check the email exist or not
+    @GetMapping("/checkemail")
+    public ResponseEntity<Boolean> checkEmailExists(@RequestParam String email) {
+        boolean emailExists = userService.checkEmailExists(email);
+        return ResponseEntity.ok(emailExists);
+    }
 
 }
