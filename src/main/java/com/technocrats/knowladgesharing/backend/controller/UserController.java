@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @RestController
-//@CrossOrigin("*")
+@CrossOrigin("*")
 @RequestMapping("/api/users") //edit
 public class UserController {
     @Autowired
@@ -57,6 +57,8 @@ public class UserController {
 
         // Send email to the guardian with username and password
         if (user.getUser_type().equals("Guardian")) {
+            emailService.sendUsernameAndPassword(user.getEmail());
+        }else if (user.getUser_type().equals("Doctor") || user.getUser_type().equals("Nutritionist")) {
             emailService.sendUsernameAndPassword(user.getEmail());
         }
 

@@ -22,17 +22,43 @@ public class EmailService {
             throw new RuntimeException("User not found");
         }
 
-        // Send an email to the guardian with the username and password
+        String userType = user.getUser_type();
+        String subject = "Account Details";
+
+        // Customize the email content based on the user type
+        String emailContent = "";
+        if (userType.equals("Guardian")) {
+            emailContent = "Your account has been created with the following details:\n" +
+                    "Username: " + user.getEmail() + "\n" +
+                    "Password: " + user.getPassword() + "\n\n" +
+                    "Please keep this information secure.\n\n" +
+                    "Regards,\n" +
+                    "Diamate";
+        } else if (userType.equals("Doctor")) {
+            subject = "Doctor Account Details";
+            emailContent = "Dear Doctor,\n\n" +
+                    "Your doctor account has been created with the following details:\n" +
+                    "Username: " + user.getEmail() + "\n" +
+                    "Password: " + user.getPassword() + "\n\n" +
+                    "Please keep this information secure.\n\n" +
+                    "Regards,\n" +
+                    "Diamate";
+        } else if (userType.equals("Nutritionist")) {
+            subject = "Nutritionist Account Details";
+            emailContent = "Dear Nutritionist,\n\n" +
+                    "Your nutritionist account has been created with the following details:\n" +
+                    "Username: " + user.getEmail() + "\n" +
+                    "Password: " + user.getPassword() + "\n\n" +
+                    "Please keep this information secure.\n\n" +
+                    "Regards,\n" +
+                    "Diamate";
+        }
+
+        // Send an email with the customized content
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
-        message.setSubject("Account Details");
-        message.setText("Dear Guardian,\n\n" +
-                "Your account has been created with the following details:\n" +
-                "Username: " + user.getEmail() + "\n" +
-                "Password: " + user.getPassword() + "\n\n" +
-                "Please keep this information secure.\n\n" +
-                "Regards,\n" +
-                "Your App");
+        message.setSubject(subject);
+        message.setText(emailContent);
 
         mailSender.send(message);
     }
