@@ -36,4 +36,5 @@ public class DoctorInputRequestObject {
      List<String> a_date;
      List<String> a_time;
      List<String> p_rate;
+
 }
