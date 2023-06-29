@@ -34,7 +34,4 @@ public class DoctorService {
 //    public List<Doctor> getDataAcordingToCatergory( String catergory){
 //        return doctorRepository.findByCatergory(catergory);
 //    }
-
-
-
 }

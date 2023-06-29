@@ -60,5 +60,6 @@ public class Doctor {
     private int telephoneno;
     private String hNo;
     private String img_url;
+    private String type;
 
 }
