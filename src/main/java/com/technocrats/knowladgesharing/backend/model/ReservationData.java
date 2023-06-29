@@ -1,13 +1,44 @@
 package com.technocrats.knowladgesharing.backend.model;
 
+import lombok.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
+@Table(name = "refund_details")
 public class ReservationData {
-    private Long id;
+
+
+
+    @Column(name = "account_holder_name")
     private String account_holder_name;
+
+    @Column(name = "bank")
     private String bank;
+
+    @Column(name = "account_number")
     private String account_number;
+
+
+    @Column(name = "mobile_number")
     private String mobile_number;
+
+
+    @Column(name = "customer_name")
     private String customer_name;
+
+
+    @Column(name = "booking_date")
     private String booking_date;
+    @Id
+    private Long id;
 
     // Default construct
 
@@ -76,4 +107,6 @@ public class ReservationData {
         this.customer_name = customer_name;
         this.booking_date = booking_date;
     }
+
+
 }

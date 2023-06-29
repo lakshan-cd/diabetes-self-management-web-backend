@@ -96,7 +96,6 @@ public class ReservationController {
 
     @DeleteMapping("/deleteReservation")
     public ResponseEntity<Object> deleteReservation(@RequestBody ReservationData reservationData) {
-        // Extract the required fields from reservationData object
         Long id = reservationData.getId();
         String accountHolderName = reservationData.getAccount_holder_name();
         String bank = reservationData.getBank();
@@ -104,15 +103,9 @@ public class ReservationController {
         String mobileNumber = reservationData.getMobile_number();
         String customerName = reservationData.getCustomer_name();
         String bookingDate = reservationData.getBooking_date();
-
-        // Insert the data into the refundDetails table
-        boolean deleted = reservationService.deleteReservation(id);
-        if (deleted) {
-            // Insert the data into the refundDetails table
-            refundDetailsService.insertRefundDetails(accountHolderName, bank, accountNumber, mobileNumber, customerName, bookingDate);
+        ReservationData reservationData1 = new ReservationData(id , accountHolderName, bank, accountNumber, mobileNumber, customerName, bookingDate);
+            System.out.println(reservationData.getAccount_holder_name());
+            refundDetailsService.insertRefundDetails(reservationData1);
             return ResponseEntity.ok("Reservation deleted successfully and data inserted into table");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Reservation not found");
-        }
     }
 }
