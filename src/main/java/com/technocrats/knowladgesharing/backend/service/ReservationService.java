@@ -52,4 +52,9 @@ public class ReservationService {
     public List<Reservation> getAllCanceledReservations() {
         return reservationRepository.getAllCanceledReservations("yes");
     }
+
+    public boolean deleteReservation(Long id) {
+        reservationRepository.deleteById(id);
+        return true;
+    }
 }
