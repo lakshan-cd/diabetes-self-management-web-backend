@@ -1,10 +1,10 @@
 package com.technocrats.knowladgesharing.backend.controller;
 
 
-import com.technocrats.knowladgesharing.backend.model.KInformation;
-import com.technocrats.knowladgesharing.backend.model.Refund;
-import com.technocrats.knowladgesharing.backend.model.Reservation;
-import com.technocrats.knowladgesharing.backend.model.ReservationData;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.PaymentIntent;
+import com.technocrats.knowladgesharing.backend.model.*;
 import com.technocrats.knowladgesharing.backend.service.RefundDetailsService;
 import com.technocrats.knowladgesharing.backend.service.ReservationRequestObject;
 import com.technocrats.knowladgesharing.backend.service.ReservationService;
@@ -13,7 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin("*")
@@ -91,6 +94,38 @@ public class ReservationController {
     public List<Reservation> getAllCanceledReservations() {
         return reservationService.getAllCanceledReservations();
     }
+
+//    @GetMapping("/create")
+@PostMapping("/create")
+public String createPaymentIntent(@RequestBody PaymentRequest paymentRequest) {
+    try {
+        Stripe.apiKey = "sk_test_51NL9DjF3tLE6ePN10EjZ7hPWJdcx7RDAGjizdSBrsG2HmiSJ5G0fYAbKSWRaHHTo9NHNt25B9UMcA4eqqZJnqYKq00Z3mMJ12n";
+
+        Map<String, Object> params = new HashMap<>();
+        params.put("amount", paymentRequest.getAmount());
+        params.put("currency", paymentRequest.getCurrency());
+        params.put("payment_method_types", Collections.singletonList("card"));
+
+        PaymentIntent paymentIntent = PaymentIntent.create(params);
+
+        Map<String, String> response = new HashMap<>();
+//        response.put("clientSecret", paymentIntent.getClientSecret());
+
+//        System.out.println(response);
+        return ("ResponseEntity.ok(response)");
+    } catch (StripeException e) {
+        return  ("a");
+//        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Collections.singletonMap("error", e.getMessage()));
+    }
+}
+
+
+    @ExceptionHandler(StripeException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ResponseEntity<String> handleStripeException(StripeException e) {
+        return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
 
 
     @DeleteMapping("/deleteReservation")

@@ -37,7 +37,9 @@ public class ReservationData {
 
     @Column(name = "booking_date")
     private String booking_date;
+
     @Id
+    @Column(name = "id")
     private Long id;
 
     // Default construct
