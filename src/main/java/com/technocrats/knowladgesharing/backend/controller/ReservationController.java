@@ -41,7 +41,6 @@ public class ReservationController {
         ra.setPhone_no(reservationRequestObject.getPhone_no());
         ra.setDate(reservationRequestObject.getDate());
         ra.setTime(reservationRequestObject.getTime());
-//        ra.setP_id(reservationRequestObject.getP_id());
         ra.setP_id(reservationRequestObject.getP_id());
         ra.setD_id(reservationRequestObject.getD_id());
         ra.setIsremove(reservationRequestObject.getIsremove());
@@ -106,6 +105,8 @@ public class ReservationController {
         ReservationData reservationData1 = new ReservationData(id , accountHolderName, bank, accountNumber, mobileNumber, customerName, bookingDate);
             System.out.println(reservationData.getAccount_holder_name());
             refundDetailsService.insertRefundDetails(reservationData1);
+            reservationService.deleteReservation(reservationData.getId());
+
             return ResponseEntity.ok("Reservation deleted successfully and data inserted into table");
     }
 }
